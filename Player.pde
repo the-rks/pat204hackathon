@@ -2,6 +2,7 @@ class Player {
   // constructor
   Player (color inputColor) {
     playerColor = inputColor;
+    reset();
   }
 
   // attributes
@@ -65,10 +66,10 @@ class Player {
     if (visible) {
       noStroke();
       fill(playerColor);
+      
+      rectMode(CENTER);
       rect(posX, posY, size, size);
-
-      fill(255);
+      rectMode(CORNER);
     }
   }
-
 }
