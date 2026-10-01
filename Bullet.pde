@@ -41,9 +41,9 @@ class Bullet {
   }
 
   boolean hits (Zombie z) {
-    if (active && z.isOnScreen()) {
+    if (active && z.alive) {
       // dist btwn diameter of bullet and diameter of zombie according to positions of bullet and zombie
-      return dist(posX, posY, z.posX, z.posY) < (z.diameter + diameter) / 2;
+      return dist(posX, posY, z.xpos, z.ypos) < (z.diameter + diameter) / 2;
     }
     return false;
   }

@@ -1,58 +1,61 @@
 class Zombie {
   
+  // constructor
+  Zombie(int diameter) {
+    diameter = inputDiameter
+  }
+  
   // attributes
-  int size;
+  int diameter;
   float xpos;
   float ypos;
   float speed;
-  boolean alive;
+  int delay = 0; // frames to wait before appearing
+  boolean alive = false;
   
-  // constructor
-  Zombie(float x, float y, float s) {
-    size = 30;
-    xpos = x;
-    ypos = y;
-    speed = s;
-    alive = true;
-    
-    //spawn behavior
-    //randomly pick a side
-    int side = int(random(4));
-    
-    //spawn in the middle 25% of that side
-    if (side == 0) {
-      //top
-      xpos = random(width * 0.375, width * 0.625);
-      ypos = -size;
-      
-    } else if (side == 1) {
-      //right
-      xpos = width + size;
-      ypos = random(height * 0.375, height * 0.625);
-      
-    } else if (side == 2) {
-      //bottom
-      xpos = random(width * 0.375, width * 0.625);
-      ypos = height + size;
-      
-    } else {
-      //left
-      xpos = -size;
-      ypos = random(height * 0.375, height * 0.625);
-    }
+  void spawn (float startX, float startY, float inputSpeed, int inputDelay) {
+    xpos = startX;
+    ypos = startY;
+    speed = inputSpeed;
+    delay = inputDelay;
+    alive = true;    
   }
   
   //move towards player
-  void move(Player player) {
+  void move(float targetX, float targetY) {
     
-    //angle from the zombie to the player
-    float angle = atan2(
-      player.posY - ypos,
-      player.posX - xpos
-    );
+    if (alive) {
+      
+      if (delay > 0) {
+        --delay; // decrement delay if there is still delay
+      }
+      else {
     
-    xpos += cos(angle) * speed;
-    ypos += sin(angle) * speed;
+        //angle from the zombie to the player
+        float angle = atan2(
+          player.posY - ypos,
+          player.posX - xpos
+        );
+        
+        xpos += cos(angle) * speed;
+        ypos += sin(angle) * speed;
+        
+        // boundary checks so we dont go off screen
+        if (xpos < diameter / 2) {
+            xpos = diameter / 2;
+        }
+        else if (xpos > width - diameter / 2) {
+            xpos = width - diameter / 2;
+        }
+    
+        if (ypos < diameter / 2) {
+            ypos = diameter / 2;
+        }
+        else if (ypos > height - diameter / 2) {
+            ypos = height - diameter / 2;
+        }
+      }
+    }
   }
   
   boolean touching(Player player) {
