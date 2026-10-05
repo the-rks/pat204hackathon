@@ -64,11 +64,40 @@ class Player {
 
   void display () {
     if (visible) {
-      noStroke();
-      fill(playerColor);
+      //noStroke();
+      //fill(playerColor);
+      
+      //rectMode(CENTER);
+      //rect(posX, posY, size, size);
+      //rectMode(CORNER);
       
       rectMode(CENTER);
-      rect(posX, posY, size, size);
+      
+      // shadow
+      noStroke();
+      fill(0, 60);
+      ellipse(posX, posY + size / 2, size, size / 3);
+      
+      // gun, pointing at the mouse
+      float angle = atan2(mouseY - posY, mouseX - posX);
+      stroke(40);
+      strokeWeight(5);
+      line(posX, posY, posX + cos(angle) * 24, posY + sin(angle) * 24);
+      
+      // body (shirt color is playerColor)
+      noStroke();
+      fill(playerColor);
+      rect(posX, posY + 4, size - 8, size - 8);
+      
+      // head
+      fill(220, 180, 95);
+      ellipse(posX, posY - 8, 14, 14);
+      
+      // hat
+      fill(120, 70, 30);
+      ellipse(posX, posY - 12, 28, 8); // brim
+      rect(posX, posY - 17, 14, 10); // top
+      
       rectMode(CORNER);
     }
   }

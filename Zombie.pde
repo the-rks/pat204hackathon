@@ -61,8 +61,36 @@ class Zombie {
   void display() {
     
     if (alive) {
-      fill(255, 0, 0);
+      // fill(255, 0, 0);
+      // ellipse(xpos, ypos, diameter, diameter);
+      
+      // shadow
+      noStroke();
+      fill(0, 60);
+      ellipse(xpos, ypos + diameter / 2, diameter, diameter / 3);
+      
+      // body
+      stroke(120, 0, 0);
+      strokeWeight(3);
+      fill(225, 45, 45);
       ellipse(xpos, ypos, diameter, diameter);
+      
+      // eyes
+      noStroke();
+      fill(255);
+      ellipse(xpos - 6, ypos - 3, 9, 9);
+      ellipse(xpos + 6, ypos - 3, 9, 9);
+      
+      fill(0);
+      ellipse(xpos - 6, ypos - 2, 4, 4);
+      ellipse(xpos + 6, ypos - 2, 4, 4);
+      
+      // mouth
+      stroke(80, 0, 0);
+      strokeWeight(2);
+      line(xpos - 6, ypos + 7, xpos + 6, ypos + 7);
     }
+    
+    
   }
 }

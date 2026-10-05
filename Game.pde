@@ -358,6 +358,7 @@ class Game {
       text("YOU WIN!", width / 2, height / 2 - 30);
       
       textSize(20);
+      text("Final score: " + score, width / 2, height / 2 + 25);
       text("Press R to play again", width / 2, height / 2 + 30);
       
       textAlign(LEFT, BASELINE);
