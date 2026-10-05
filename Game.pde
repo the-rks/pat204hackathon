@@ -44,10 +44,10 @@ class Game {
   int[] gateX = new int[4];
   int[] gateY = new int[4];
   
-  int lives = 3;
-  int score = 0;
+  int lives = 3; // num of lives player has to start with
+  int score = 0; // score
   
-  int wave = 1;
+  int wave = 1; // indicates which wave we are one
   int lastWave = 5; // survive this many waves to win
   
   int waveTimer; //frames left in this wave, 60 frames = 1 sec
@@ -77,12 +77,12 @@ class Game {
     blinking = false;
     blinkTimer = 0;
     
-    //turn all zombies off first?
+    // clear out zombies from last wave
     for (int i = 0; i < zombieArray.length; ++i) {
       zombieArray[i].alive = false;
     }
     
-    //turn all bullets off?
+    // clear out bullets from last wave
     for (int i = 0; i < bulletArray.length; ++i) {
       bulletArray[i].active = false;
     }
@@ -174,8 +174,10 @@ class Game {
   }
   
   
-
-  //update game
+  // =========================
+  // UPDATE
+  // =========================
+  
   void update() {
     
     // don't update if game has ended
@@ -223,7 +225,7 @@ class Game {
             
             score++;
             
-            break;
+            break; // stop checking once a bullet hits a zombie
           }
         }
       }
@@ -255,6 +257,7 @@ class Game {
       --blinkTimer;
       
       // Make player blink
+      // flips cowboy on and off every 5 frames to mimic a blinking effect
       player.visible = (frameCount % 10 < 5);
       
       if (blinkTimer <= 0) {
@@ -316,7 +319,7 @@ class Game {
     }
     
 
-    //bullets    
+    //player    
     player.display();
     
     
@@ -331,9 +334,6 @@ class Game {
     
     int secondsLeft = max(0, waveTimer / 60);
     text("Time: " + secondsLeft, 20, 105);
-    text("WASD/Arrow to Move", width - 200, 30);
-    text("Mouse to Aim", width - 137, 55);
-    text("Click/Space to Shoot", width - 196, 80);
     
     
     if (gameOver) {
@@ -359,8 +359,8 @@ class Game {
       text("YOU WIN!", width / 2, height / 2 - 30);
       
       textSize(20);
-      text("Final score: " + score, width / 2, height / 2 + 25);
-      text("Press R to play again", width / 2, height / 2 + 30);
+      text("Final score: " + score, width / 2, height / 2 + 30);
+      text("Press R to play again", width / 2, height / 2 + 60);
       
       textAlign(LEFT, BASELINE);
     }

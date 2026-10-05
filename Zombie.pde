@@ -43,7 +43,7 @@ class Zombie {
   }
 
 
-
+  // checks whether distance between centers is less than the two radii added together
   boolean touching(Player player) {
     
     if (!alive) {

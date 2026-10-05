@@ -51,9 +51,7 @@ class Bullet {
   void display () {
     if (active) {
       noStroke();
-      // fill(255, 230, 80);
-      // ellipse(posX, posY, diameter, diameter);
-      
+
       // soft glow around the bullet
       fill(255, 230, 80, 70);
       ellipse(posX, posY, diameter * 2.5, diameter * 2.5);

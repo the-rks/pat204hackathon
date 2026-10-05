@@ -64,12 +64,6 @@ class Player {
 
   void display () {
     if (visible) {
-      //noStroke();
-      //fill(playerColor);
-      
-      //rectMode(CENTER);
-      //rect(posX, posY, size, size);
-      //rectMode(CORNER);
       
       rectMode(CENTER);
       

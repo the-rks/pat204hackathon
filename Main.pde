@@ -1,5 +1,9 @@
 Game game;
-
+// essentially, this is a game where the player (a cowboy) has to ward off
+// zombies, apocalpyse style
+// zombies spawn at random from four locations and move towards the player
+// who can shoot them with bullets by clicking the mouse and move with WASD
+// they have 3 lives and if they lose all of them, they can press R to restart
 
 void setup() {
   size(800, 800);
