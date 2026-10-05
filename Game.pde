@@ -174,10 +174,8 @@ class Game {
   }
   
   
-  // =========================
-  // UPDATE
-  // =========================
-  
+
+  //update game
   void update() {
     
     // don't update if game has ended
@@ -333,6 +331,9 @@ class Game {
     
     int secondsLeft = max(0, waveTimer / 60);
     text("Time: " + secondsLeft, 20, 105);
+    text("WASD/Arrow to Move", width - 200, 30);
+    text("Mouse to Aim", width - 137, 55);
+    text("Click/Space to Shoot", width - 196, 80);
     
     
     if (gameOver) {
